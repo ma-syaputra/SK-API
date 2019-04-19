@@ -1,11 +1,5 @@
 'use strict'
 var urlDB = require("./../connections/config_mongoDB")
-
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
-
-var mongoose = require('mongoose');
-
 module.exports = {
     list: function() {
         return new Promise((resolve, reject) => {
