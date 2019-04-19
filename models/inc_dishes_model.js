@@ -17,9 +17,3 @@ module.exports = {
 }
 
 
-function getNextSequence(db, name, callback) {
-    db.collection("counters").findAndModify( { _id: name }, null, { $inc: { seq: 1 } }, function(err, result){
-        if(err) callback(err, result);
-        callback(err, result.value.seq);
-    } );
-}
