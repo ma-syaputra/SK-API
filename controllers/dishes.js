@@ -50,15 +50,39 @@ exports.add = (req, res) => {
         dataDishes.then(response => {
             res_app.success_app(response,res)
         }).catch(err => {
-            res_app.fail_app(err,res);
+            res_app.bad_app(res);
         })
     }
+
+    exports.editdishes = (req, res) => {
+        const id = parseInt(req.body.id)
+        var dishes = req.body.name
+        if (!dishes) return res_app.bad_app(res)
+        var data = {dishesName : dishes}
+        const dataDishes = m_dishes.edit(id,data)
+        dataDishes.then(response => {
+            res_app.success_app(response,res)
+        }).catch(err => {
+            res_app.bad_app(res);
+        })
+    }
+
+    exports.deletedishes = (req, res) => {
+        const id = parseInt(req.body.id)
+        const dataDishes = m_dishes.remove(id)
+        dataDishes.then(response => {
+            res_app.success_app(response,res)
+        }).catch(err => {
+            res_app.bad_app(res);
+        })
+    }
+
     exports.delete = (req, res) => {
         const id = parseInt(req.params.id)
         const dataDishes = m_dishes.remove(id)
         dataDishes.then(response => {
             res_app.success_app(response,res)
         }).catch(err => {
-            res_app.fail_app(err,res);
+            res_app.bad_app(res);
         })
     }

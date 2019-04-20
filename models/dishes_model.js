@@ -49,6 +49,8 @@ module.exports = {
                 var query = { dishesId: id }
                 var newvalues = { $set: data }
                 dbo.collection(urlDB.collectionDB).updateOne(query, newvalues, function(err, res) {
+                    var updated=res.result.nModified
+                    if (updated==0) return reject(false)
                     if (err) return reject(err)
                     resolve(true)
                   })
@@ -61,7 +63,9 @@ module.exports = {
                 if (err) return reject(err)
                 var dbo = db.db(urlDB.db)
                 var query = { dishesId: id }
-                dbo.collection(urlDB.collectionDB).deleteOne(query, function(err, res) {
+                dbo.collection(urlDB.collectionDB).deleteOne(query, function(err, obj) {
+                    var deleted = obj.result.n
+                    if (deleted==0) return reject(false)
                     if (err) return reject(err)
                     resolve(true)
                   })

@@ -9,6 +9,8 @@ module.exports = function(app) {
     app.get('/', swaggerUi.setup(swaggerDocument));
     app.route('/dishes').get(dishes.list);
     app.route('/dishes').post(dishes.add);
+    app.route('/dishes').put(dishes.editdishes);
+    app.route('/dishes').delete(dishes.deletedishes);
     app.route('/dishes/:id').get(dishes.detail);
     app.route('/dishes/:id').put(dishes.edit);
     app.route('/dishes/:id').delete(dishes.delete);

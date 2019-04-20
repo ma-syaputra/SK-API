@@ -11,7 +11,7 @@ module.exports = {
             },
     bad_app: function(res) {
         res.status(400).send({status: 400,
-                    response : 'Failed' });
+                    response : false });
             },
     send_app: function(response,res) {
         res.status(200).send({status: 200,

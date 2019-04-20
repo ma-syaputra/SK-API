@@ -73,7 +73,70 @@
                         "description": "Failed. Bad post data."
                     }
                 }
+            },
+            "put": {
+                "summary": "Update dishes with given ID ",
+                "tags": [
+                    "Dishes"
+                ],
+                "requestBody": {
+                    "description": "Dishes Object",
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/definitions/Catnew"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Cat"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    },
+                    "404": {
+                        "description": "Failed. Cat not found."
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete dishes with given ID ",
+                "tags": [
+                    "Dishes"
+                ],
+                "requestBody": {
+                    "description": "Dishes Object",
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/definitions/Catnewid"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Cat"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    },
+                    "404": {
+                        "description": "Failed. Cat not found."
+                    }
+                }
             }
+
         },
         "/dishes/{id}": {
             "parameters": [
@@ -114,7 +177,7 @@
                 }
             },
             "put": {
-                "summary": "Update dishes with given ID",
+                "summary": "Update dishes with given ID ",
                 "tags": [
                     "Dishes"
                 ],
@@ -198,6 +261,25 @@
             "properties": {
                 "name": {
                     "type": "string"
+                }
+            }
+        },
+        "Catnew": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "id" : {
+                    "type" : "string"
+                }
+            }
+        },
+        "Catnewid": {
+            "type": "object",
+            "properties": {
+                "id" : {
+                    "type" : "string"
                 }
             }
         },
