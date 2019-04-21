@@ -3,4 +3,4 @@ create DATABASE mongo with name m_dishes and import file to mongo from import db
 
 - npm install
 - and run server
-- my port default 3000
+- my port default 3000 / Swagger
